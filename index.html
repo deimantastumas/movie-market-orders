@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Užsakymų sąrašas</h1>
+<div id="filtering">
+    <form onsubmit="return false">
+    <div class="form-group">
+      <input type="text" placeholder="Paieška" class="form-control" id="usr">
+    </div>
+  </form>
+
+<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="sort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Pagal vardą
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Pagal vardą</a>
+<a class="dropdown-item" href="#">Pagal pavardę</a>
+<a class="dropdown-item" href="#">Pagal užsakymo laiką</a>
+</div>
+</div>
+
+<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Visi
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Apmokėta</a>
+<a class="dropdown-item" href="#">Neapmokėta</a>
+<a class="dropdown-item" href="#">Visi</a>
+</div>
+</div>
+</div>
+  <div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Vardas</th>
+        <th>Pavardė</th>
+        <th>Šalis</th>
+        <th>Užsakymo laikas</th>
+        <th>Apmokėjimo statusas</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+
+
+</body>
+
+</html>
+
+<script>
+$(document).ready(function(){
+
+  var orders = [
+    {name:"Jonas", lastname:"Jonaitis", country:"Lietuva", ordertime:"2015-01-10", status:"Apmokėta"},
+    {name:"Mantas", lastname:"Mantaitis", country:"Lietuva", ordertime:"2013-01-10", status:"Neapmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estija", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Petras", lastname:"Petraitis", country:"Estija", ordertime:"2010-10-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+  ];
+
+  var filteredArray = [];
+  orders.sort(function(a, b){
+    var keyA = a.name,
+        keyB = b.name;
+    if(keyA < keyB) return -1;
+    if(keyA > keyB) return 1;
+    return 0;
+  });
+
+  // LOAD DEFAULT DATA
+  for (var i = 0; i < orders.length; i++)
+  {
+    var name = orders[i].name;
+    var lastname = orders[i].lastname;
+    var country = orders[i].country;
+    var ordertime = orders[i].ordertime;
+    var status = orders[i].status;
+    filteredArray.push(orders[i]);
+    LoadOrder(i + 1, name, lastname, country, ordertime, status);
+  }
+
+  $(document).on('click', '.dropdown-menu a', function() {
+    if ($(this).html() == "Apmokėta")
+    {
+      $('#filter').text("Apmokėta");
+      filteredArray = [];
+      for (var i = 0; i < orders.length; i++)
+      {
+        if (orders[i].status == "Apmokėta")
+          filteredArray.push(orders[i]);
+      }
+      UpdateList(filteredArray);
+    }
+    else if ($(this).html() == "Neapmokėta")
+    {
+      $('#filter').text("Neapmokėta");
+      filteredArray = [];
+      for (var i = 0; i < orders.length; i++)
+      {
+        if (orders[i].status == "Neapmokėta")
+          filteredArray.push(orders[i]);
+      }
+      UpdateList(filteredArray);
+    }
+    else if ($(this).html() == "Visi")
+    {
+      $('#filter').text("Visi");
+      filteredArray = [];
+      for (var i = 0; i < orders.length; i++)
+      {
+        filteredArray.push(orders[i]);
+      }
+      UpdateList(filteredArray);
+    }
+  });
+
+
+  $(document).on('click', '.dropdown-menu a', function() {
+    if ($(this).html() == "Pagal vardą")
+    {
+      $('#sort').text("Pagal vardą");
+      filteredArray.sort(function(a, b){
+        var keyA = a.name,
+            keyB = b.name;
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+      });
+    }
+    else if ($(this).html() == "Pagal pavardę")
+    {
+      $('#sort').text("Pagal pavardę");
+      filteredArray.sort(function(a, b){
+        var keyA = a.lastname,
+            keyB = b.name;
+        // Compare the 2 dates
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+      });
+    }
+    else if ($(this).html() == "Pagal užsakymo laiką")
+    {
+      $('#sort').text("Pagal užsakymo laiką");
+      filteredArray.sort(function(a, b){
+        var keyA = new Date(a.ordertime),
+            keyB = new Date(b.ordertime);
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+      });
+    }
+    UpdateList(filteredArray);
+  });
+
+  $("#usr").change(function(){
+    var searchField = $('#usr').val();
+    $('tbody').html('');
+    for (var i = 0; i < filteredArray.length; i++)
+    {
+      var expression = new RegExp(searchField, "i");
+      if (filteredArray[i].name.search(expression) != -1 || filteredArray[i].lastname.search(expression) != -1) {
+        var name = filteredArray[i].name;
+        var lastname = filteredArray[i].lastname;
+        var country = filteredArray[i].country;
+        var ordertime = filteredArray[i].ordertime;
+        var status = filteredArray[i].status;
+        LoadOrder(i + 1, name, lastname, country, ordertime, status);
+      }
+    }
+  });
+
+  function UpdateList(array) {
+    $('tbody').html('');
+    for (var i = 0; i < filteredArray.length; i++)
+    {
+      var name = filteredArray[i].name;
+      var lastname = filteredArray[i].lastname;
+      var country = filteredArray[i].country;
+      var ordertime = filteredArray[i].ordertime;
+      var status = filteredArray[i].status;
+
+      LoadOrder(i + 1, name, lastname, country, ordertime, status);
+    }
+  }
+
+  function LoadOrder(i, name, lastname, country, ordertime, status) {
+    $("tbody").append('<tr></tr>');
+    $("tr:last").append('<td>' + i + '</td>');
+    $("tr:last").append('<td>' + name + '</td>');
+    $("tr:last").append('<td>' + lastname + '</td>');
+    $("tr:last").append('<td>' + country + '</td>');
+    $("tr:last").append('<td>' + ordertime + '</td>');
+    $("tr:last").append('<td>' + status + '</td>');
+  }
+});
+
+</script>
