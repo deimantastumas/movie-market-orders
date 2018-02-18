@@ -18,3 +18,13 @@ h1 {
   margin: 0px;
   width: 300px;
 }
+
+hr {
+    margin-top: 30px;
+    width: 500px;
+}
+
+p {
+   color: white;
+   font-family: 'Josefin Sans', sans-serif;
+ }
