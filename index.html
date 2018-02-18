@@ -14,22 +14,22 @@
 <body>
 
   <div class="container">
-    <h1>Užsakymų sąrašas</h1>
+    <h1>Order list</h1>
 <div id="filtering">
     <form onsubmit="return false">
     <div class="form-group">
-      <input type="text" placeholder="Paieška" class="form-control" id="usr">
+      <input type="text" placeholder="Search" class="form-control" id="usr">
     </div>
   </form>
 
 <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" id="sort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Pagal vardą
+By name
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Pagal vardą</a>
-<a class="dropdown-item" href="#">Pagal pavardę</a>
-<a class="dropdown-item" href="#">Pagal užsakymo laiką</a>
+<a class="dropdown-item" href="#">By name</a>
+<a class="dropdown-item" href="#">By surname</a>
+<a class="dropdown-item" href="#">By order time</a>
 </div>
 </div>
 
@@ -38,9 +38,9 @@ Pagal vardą
 Visi
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Apmokėta</a>
-<a class="dropdown-item" href="#">Neapmokėta</a>
-<a class="dropdown-item" href="#">Visi</a>
+<a class="dropdown-item" href="#">Paid</a>
+<a class="dropdown-item" href="#">Unpaid</a>
+<a class="dropdown-item" href="#">All</a>
 </div>
 </div>
 </div>
@@ -49,11 +49,11 @@ Visi
     <thead>
       <tr>
         <th>#</th>
-        <th>Vardas</th>
-        <th>Pavardė</th>
-        <th>Šalis</th>
-        <th>Užsakymo laikas</th>
-        <th>Apmokėjimo statusas</th>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Country</th>
+        <th>Order time</th>
+        <th>Order status</th>
       </tr>
     </thead>
     <tbody>
@@ -73,56 +73,10 @@ Visi
 $(document).ready(function(){
 
   var orders = [
-    {name:"Jonas", lastname:"Jonaitis", country:"Lietuva", ordertime:"2015-01-10", status:"Apmokėta"},
-    {name:"Mantas", lastname:"Mantaitis", country:"Lietuva", ordertime:"2013-01-10", status:"Neapmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estija", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Petras", lastname:"Petraitis", country:"Estija", ordertime:"2010-10-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
-    {name:"Žilvinas", lastname:"Žilvinaitis", country:"Estonia", ordertime:"2015-02-10", status:"Apmokėta"},
+    {name:"Jonas", lastname:"Jonaitis", country:"Lithuania", ordertime:"2015-01-10", status:"Paid"},
+    {name:"Mantas", lastname:"Mantaitis", country:"Estonia", ordertime:"2013-01-10", status:"Unpaid"},
+    {name:"Edwyn", lastname:"Shayla", country:"Estonia", ordertime:"2015-02-10", status:"Paid"},
+    {name:"Petras", lastname:"Petraitis", country:"Latvia", ordertime:"2010-10-10", status:"Paid"},
   ];
 
   var filteredArray = [];
@@ -147,31 +101,31 @@ $(document).ready(function(){
   }
 
   $(document).on('click', '.dropdown-menu a', function() {
-    if ($(this).html() == "Apmokėta")
+    if ($(this).html() == "Paid")
     {
-      $('#filter').text("Apmokėta");
+      $('#filter').text("Paid");
       filteredArray = [];
       for (var i = 0; i < orders.length; i++)
       {
-        if (orders[i].status == "Apmokėta")
+        if (orders[i].status == "Paid")
           filteredArray.push(orders[i]);
       }
       UpdateList(filteredArray);
     }
-    else if ($(this).html() == "Neapmokėta")
+    else if ($(this).html() == "Unpaid")
     {
-      $('#filter').text("Neapmokėta");
+      $('#filter').text("Unpaid");
       filteredArray = [];
       for (var i = 0; i < orders.length; i++)
       {
-        if (orders[i].status == "Neapmokėta")
+        if (orders[i].status == "Unpaid")
           filteredArray.push(orders[i]);
       }
       UpdateList(filteredArray);
     }
-    else if ($(this).html() == "Visi")
+    else if ($(this).html() == "All")
     {
-      $('#filter').text("Visi");
+      $('#filter').text("All");
       filteredArray = [];
       for (var i = 0; i < orders.length; i++)
       {
@@ -183,9 +137,9 @@ $(document).ready(function(){
 
 
   $(document).on('click', '.dropdown-menu a', function() {
-    if ($(this).html() == "Pagal vardą")
+    if ($(this).html() == "By name")
     {
-      $('#sort').text("Pagal vardą");
+      $('#sort').text("By name");
       filteredArray.sort(function(a, b){
         var keyA = a.name,
             keyB = b.name;
@@ -194,9 +148,9 @@ $(document).ready(function(){
         return 0;
       });
     }
-    else if ($(this).html() == "Pagal pavardę")
+    else if ($(this).html() == "By surname")
     {
-      $('#sort').text("Pagal pavardę");
+      $('#sort').text("By surname");
       filteredArray.sort(function(a, b){
         var keyA = a.lastname,
             keyB = b.name;
@@ -206,9 +160,9 @@ $(document).ready(function(){
         return 0;
       });
     }
-    else if ($(this).html() == "Pagal užsakymo laiką")
+    else if ($(this).html() == "By order time")
     {
-      $('#sort').text("Pagal užsakymo laiką");
+      $('#sort').text("By order time");
       filteredArray.sort(function(a, b){
         var keyA = new Date(a.ordertime),
             keyB = new Date(b.ordertime);
