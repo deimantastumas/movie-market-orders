@@ -74,8 +74,7 @@ $(document).ready(function(){
       $('#sort').text("By surname");
       filteredArray.sort(function(a, b){
         var keyA = a.lastname,
-            keyB = b.name;
-        // Compare the 2 dates
+            keyB = b.lastname;
         if(keyA < keyB) return -1;
         if(keyA > keyB) return 1;
         return 0;
@@ -101,7 +100,7 @@ $(document).ready(function(){
     for (var i = 0; i < filteredArray.length; i++)
     {
       var expression = new RegExp(searchField, "i");
-      if (filteredArray[i].name.search(expression) != -1 || filteredArray[i].lastname.search(expression) != -1) {
+      if (filteredArray[i].name.search(expression) != -1 || filteredArray[i].lastname.search(expression) != -1 || filteredArray[i].country.search(expression) != -1) {
         var name = filteredArray[i].name;
         var lastname = filteredArray[i].lastname;
         var country = filteredArray[i].country;
